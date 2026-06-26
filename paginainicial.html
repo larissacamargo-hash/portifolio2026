@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✨ Hello Kitty · Maria Eduarda</title>
+  <!-- Fontes e ícones fofos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: #fce4ec;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      max-width: 920px;
+      width: 100%;
+      background: #fff9fa;
+      border-radius: 60px 60px 60px 60px;
+      box-shadow: 0 20px 40px rgba(255, 105, 135, 0.25), 0 8px 20px rgba(255, 80, 120, 0.15);
+      padding: 30px 35px 40px;
+      position: relative;
+      border: 3px solid #ffb6c9;
+      transition: 0.3s;
+    }
+
+    .card::before {
+      content: "🐱";
+      position: absolute;
+      top: -18px;
+      left: 30px;
+      font-size: 3.2rem;
+      transform: rotate(-10deg);
+      filter: drop-shadow(0 8px 6px rgba(255, 80, 120, 0.2));
+    }
+
+    .card::after {
+      content: "🌸";
+      position: absolute;
+      bottom: 20px;
+      right: 25px;
+      font-size: 2.8rem;
+      opacity: 0.4;
+      transform: rotate(15deg);
+    }
+
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      border-bottom: 2px dashed #ffb0c3;
+      padding-bottom: 20px;
+    }
+
+    .nome-titulo h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #b3415c;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nome-titulo h1 i {
+      font-size: 2rem;
+      color: #ff85a2;
+    }
+
+    .subtitulo {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #b34b66;
+      background: #ffe2eb;
+      padding: 6px 18px;
+      border-radius: 40px;
+      display: inline-block;
+      margin-top: 6px;
+      border: 2px solid #ffb7cb;
+    }
+
+    .info-rapida {
+      background: #ffeef2;
+      padding: 12px 20px;
+      border-radius: 50px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 25px;
+      font-weight: 600;
+      color: #7f3f51;
+      border: 2px solid #ffbfd0;
+      box-shadow: inset 0 2px 6px rgba(255, 150, 180, 0.2);
+      margin-top: 8px;
+    }
+
+    .info-rapida span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-rapida i {
+      color: #e86380;
+      font-size: 1.2rem;
+      width: 22px;
+      text-align: center;
+    }
+
+    .dados-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 30px;
+      background: #fff4f7;
+      padding: 18px 25px;
+      border-radius: 40px;
+      margin: 16px 0 22px;
+      border: 2px solid #ffc1d2;
+      font-weight: 500;
+      color: #572b3b;
+    }
+
+    .dados-grid i {
+      color: #d64b6b;
+      width: 26px;
+      margin-right: 4px;
+    }
+
+    .dados-grid .item {
+      display: flex;
+      align-items: center;
+    }
+
+    .sobre-mim {
+      background: #fffafb;
+      padding: 22px 28px;
+      border-radius: 50px;
+      margin: 20px 0 28px;
+      border: 2px solid #ffb6cb;
+      box-shadow: 0 6px 0 #ffb0c0;
+      transition: 0.2s;
+    }
+
+    .sobre-mim h2 {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 1.8rem;
+      color: #aa4b64;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .sobre-mim h2 i {
+      color: #ff7b9c;
+      font-size: 2rem;
+    }
+
+    .sobre-mim p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #3f2a32;
+      font-weight: 500;
+      background: #fff0f4;
+      padding: 16px 22px;
+      border-radius: 40px;
+      border: 2px dashed #ff99b2;
+      margin-top: 6px;
+    }
+
+    /* ESTILO DA GALERIA DE FOTOS */
+    .galeria {
+      margin: 25px 0 28px;
+      padding: 20px 25px 25px;
+      background: #fff5f8;
+      border-radius: 50px;
+      border: 2px solid #ffb6cb;
+      box-shadow: 0 6px 0 #ffb0c0;
+    }
+
+    .galeria h2 {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 1.8rem;
+      color: #aa4b64;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .galeria h2 i {
+      color: #ff7b9c;
+      font-size: 2rem;
+    }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .foto-item {
+      background: white;
+      border-radius: 30px;
+      padding: 12px;
+      border: 3px solid #ffc8d7;
+      box-shadow: 0 6px 0 #ffb0c0;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .foto-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 0 #ffb0c0;
+    }
+
+    .foto-item .placeholder-imagem {
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(135deg, #ffe2eb, #ffc8d7);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #b34b66;
+      font-weight: 600;
+      font-size: 0.95rem;
+      gap: 8px;
+      border: 2px dashed #ff99b2;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .foto-item .placeholder-imagem i {
+      font-size: 3rem;
+      color: #e86380;
+      opacity: 0.7;
+    }
+
+    .foto-item .placeholder-imagem:hover {
+      background: linear-gradient(135deg, #ffd5e2, #ffb8cc);
+      border-color: #e86380;
+    }
+
+    .foto-item .placeholder-imagem img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .foto-item .legenda {
+      margin-top: 10px;
+      font-weight: 600;
+      color: #7f3f51;
+      font-size: 0.95rem;
+      padding: 4px 10px;
+      background: #ffeef2;
+      border-radius: 20px;
+      display: inline-block;
+    }
+
+    .btn-add-foto {
+      background: #f25c7e;
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 5px;
+      font-family: 'Quicksand', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid #ffdae4;
+    }
+
+    .btn-add-foto:hover {
+      background: #f04a70;
+      transform: scale(1.02);
+    }
+
+    .btn-portfolio {
+      display: flex;
+      justify-content: center;
+      margin-top: 12px;
+      margin-bottom: 6px;
+    }
+
+    .btn-portfolio a {
+      background: #f25c7e;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      padding: 18px 50px;
+      border-radius: 60px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      box-shadow: 0 8px 0 #a13c55, 0 12px 28px rgba(230, 70, 110, 0.4);
+      transition: all 0.08s linear;
+      border: 3px solid #ffdae4;
+      letter-spacing: 1px;
+    }
+
+    .btn-portfolio a i {
+      font-size: 1.8rem;
+      transition: transform 0.2s;
+    }
+
+    .btn-portfolio a:hover {
+      transform: translateY(2px);
+      box-shadow: 0 4px 0 #a13c55, 0 12px 28px rgba(230, 70, 110, 0.5);
+      background: #f04a70;
+    }
+
+    .btn-portfolio a:active {
+      transform: translateY(8px);
+      box-shadow: 0 0px 0 #a13c55, 0 12px 28px rgba(230, 70, 110, 0.3);
+    }
+
+    .rodape-fofura {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+      font-size: 0.95rem;
+      color: #b55b74;
+      font-weight: 600;
+      gap: 8px;
+      align-items: center;
+      border-top: 2px dotted #ffb7c9;
+      padding-top: 18px;
+    }
+
+    .rodape-fofura i {
+      font-size: 1.3rem;
+      color: #eb5f7e;
+    }
+
+    /* responsivo */
+    @media (max-width: 680px) {
+      .card {
+        padding: 24px 20px;
+        border-radius: 40px;
+      }
+      .nome-titulo h1 {
+        font-size: 2rem;
+      }
+      .dados-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .info-rapida {
+        width: 100%;
+        justify-content: center;
+      }
+      .btn-portfolio a {
+        padding: 16px 28px;
+        font-size: 1.2rem;
+        width: 100%;
+        justify-content: center;
+      }
+      .galeria-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .card::before {
+        font-size: 2.6rem;
+        top: -10px;
+        left: 18px;
+      }
+      .nome-titulo h1 {
+        font-size: 1.7rem;
+      }
+      .sobre-mim p {
+        font-size: 1rem;
+        padding: 14px 18px;
+      }
+      .galeria-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <!-- HEADER com nome e escola -->
+  <div class="header">
+    <div class="nome-titulo">
+      <h1>
+        <i class="fas fa-crown" style="color: #ff7b9c;"></i>
+        Maria Eduarda Bassani
+        <i class="fas fa-heart" style="color: #ff4d6d; font-size: 1.8rem;"></i>
+      </h1>
+      <div class="subtitulo">
+        <i class="fas fa-graduation-cap"></i> 3º Ano Ensino Médio
+      </div>
+    </div>
+    <div class="info-rapida">
+      <span><i class="fas fa-map-pin"></i> Arapongas · PR</span>
+      <span><i class="fas fa-school"></i> C.E. Unidade Polo</span>
+      <span><i class="fas fa-code"></i> Desenvolvimento de Sistemas</span>
+    </div>
+  </div>
+
+  <!-- Dados estruturados -->
+  <div class="dados-grid">
+    <div class="item"><i class="fas fa-user-graduate"></i> <strong>Colégio:</strong> Estadual Unidade Polo</div>
+    <div class="item"><i class="fas fa-location-dot"></i> <strong>Moro em:</strong> Arapongas, Paraná, Brasil</div>
+    <div class="item"><i class="fas fa-calendar-alt"></i> <strong>Ano:</strong> 3º ano do Ensino Médio</div>
+    <div class="item"><i class="fas fa-laptop-code"></i> <strong>Curso:</strong> Desenvolvimento de Sistemas</div>
+  </div>
+
+  <!-- SOBRE MIM com textinho personalizado -->
+  <div class="sobre-mim">
+    <h2>
+      <i class="fas fa-pencil-alt"></i> Sobre mim
+      <span style="font-size: 1.2rem; margin-left: auto;">🌸</span>
+    </h2>
+    <p>
+      <i class="fas fa-quote-left" style="color: #e85a7a; margin-right: 8px;"></i>
+      Olá! Sou a Maria Eduarda, apaixonada por tecnologia, design e tudo que envolve criatividade. 
+      Atualmente estou no 3º ano do Ensino Médio e faço o curso de Desenvolvimento de Sistemas no Colégio Estadual Unidade Polo. 
+      Adoro aprender novas linguagens, criar interfaces bonitas e funcionais, e estou sempre em busca de projetos que unam lógica e estética. 
+      Nos momentos livres, curto música, desenhar e, claro, passar tempo com a família e amigos. 
+      <i class="fas fa-heart" style="color: #ff3b6b; margin-left: 6px;"></i>
+    </p>
+  </div>
+
+  <!-- GALERIA DE FOTOS - espaço para fotos do colégio e atividades -->
+  <div class="galeria">
+    <h2>
+      <i class="fas fa-images"></i> Minhas memórias
+      <span style="font-size: 1.2rem; margin-left: auto;">📸</span>
+    </h2>
+    <div class="galeria-grid" id="galeriaGrid">
+      <!-- Item 1 - Colégio -->
+      <div class="foto-item" data-id="1">
+        <div class="placeholder-imagem" onclick="adicionarFoto(this)">
+          <i class="fas fa-plus-circle"></i>
+          <span>Clique para adicionar<br>foto do colégio</span>
+        </div>
+        <div class="legenda">🏫 Colégio Unidade Polo</div>
+      </div>
+
+      <!-- Item 2 - Atividades/Curso -->
+      <div class="foto-item" data-id="2">
+        <div class="placeholder-imagem" onclick="adicionarFoto(this)">
+          <i class="fas fa-plus-circle"></i>
+          <span>Clique para adicionar<br>foto das atividades</span>
+        </div>
+        <div class="legenda">💻 Desenvolvimento de Sistemas</div>
+      </div>
+
+      <!-- Item 3 - Turma/Amigos -->
+      <div class="foto-item" data-id="3">
+        <div class="placeholder-imagem" onclick="adicionarFoto(this)">
+          <i class="fas fa-plus-circle"></i>
+          <span>Clique para adicionar<br>foto da turma</span>
+        </div>
+        <div class="legenda">👥 Minha turma</div>
+      </div>
+
+      <!-- Item 4 - Projetos -->
+      <div class="foto-item" data-id="4">
+        <div class="placeholder-imagem" onclick="adicionarFoto(this)">
+          <i class="fas fa-plus-circle"></i>
+          <span>Clique para adicionar<br>foto dos projetos</span>
+        </div>
+        <div class="legenda">🚀 Meus projetos</div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 15px;">
+      <button class="btn-add-foto" onclick="adicionarNovoItem()">
+        <i class="fas fa-plus"></i> Adicionar nova foto
+      </button>
+    </div>
+  </div>
+
+  <!-- BOTÃO QUE LEVA AO PORTIFÓLIO -->
+  <div class="btn-portfolio">
+    <a href="#" id="btnPortfolio">
+      <i class="fas fa-folder-open"></i> Meu Portfólio
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+
+  <!-- rodapé fofo -->
+  <div class="rodape-fofura">
+    <i class="fas fa-cat"></i>
+    <span>feito com 🩷 por Maria Eduarda · Hello Kitty</span>
+    <i class="fas fa-cat" style="transform: scaleX(-1);"></i>
+  </div>
+</div>
+
+<script>
+  // Função para adicionar foto (simula o upload)
+  function adicionarFoto(elemento) {
+    // Cria um input de arquivo escondido
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    
+    input.onchange = function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          // Substitui o placeholder pela imagem
+          const placeholder = elemento;
+          const fotoItem = placeholder.closest('.foto-item');
+          
+          // Cria a imagem
+          const img = document.createElement('img');
+          img.src = event.target.result;
+          img.alt = 'Foto adicionada';
+          img.style.width = '100%';
+          img.style.height = '100%';
+          img.style.objectFit = 'cover';
+          img.style.borderRadius = '20px';
+          
+          // Remove o conteúdo antigo e adiciona a imagem
+          placeholder.innerHTML = '';
+          placeholder.appendChild(img);
+          
+          // Remove o evento de clique
+          placeholder.onclick = null;
+          
+          // Adiciona evento para trocar a foto
+          placeholder.style.cursor = 'pointer';
+          placeholder.onclick = function() {
+            if (confirm('Deseja trocar esta foto?')) {
+              adicionarFoto(this);
+            }
+          };
+          
+          // Mostra um alerta fofo
+          alert('🌸 Foto adicionada com sucesso! 🌸');
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+    
+    input.click();
+  }
+
+  // Função para adicionar novo item na galeria
+  function adicionarNovoItem() {
+    const grid = document.getElementById('galeriaGrid');
+    const novoItem = document.createElement('div');
+    novoItem.className = 'foto-item';
+    novoItem.setAttribute('data-id', Date.now());
+    
+    // Gera um número aleatório para legenda
+    const legendaOptions = [
+      '🌟 Momento especial',
+      '📚 Estudos e aprendizado',
+      '🎯 Novos desafios',
+      '💡 Ideias e criações',
+      '🌈 Dia de aula',
+      '🎨 Projeto criativo'
+    ];
+    const legenda = legendaOptions[Math.floor(Math.random() * legendaOptions.length)];
+    
+    novoItem.innerHTML = `
+      <div class="placeholder-imagem" onclick="adicionarFoto(this)">
+        <i class="fas fa-plus-circle"></i>
+        <span>Clique para adicionar<br>sua foto</span>
+      </div>
+      <div class="legenda">${legenda}</div>
+    `;
+    
+    grid.appendChild(novoItem);
+    
+    // Scroll suave para o novo item
+    novoItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // Botão do portfólio
+  document.getElementById('btnPortfolio').addEventListener('click', function(e) {
+    e.preventDefault();
+    // Substitua pelo link real do seu portfólio
+    alert('🌸 Seu portfólio está quase pronto! Substitua o link no código para acessá-lo. 🌸\n\n(Link atual: #)');
+    // window.location.href = "https://mariaeduardabassani.github.io/portfolio";
+  });
+
+  // Inicializa com algumas imagens de exemplo (opcional - remova se quiser)
+  // Você pode adicionar imagens diretamente no HTML também
+</script>
+
+</body>
+</html>
